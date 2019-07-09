@@ -23,11 +23,17 @@ struct {
 } flags = {0};
 
 int main(int argc, char **argv) {
-  // REGISTERS
-  short *const AX = calloc(1, sizeof(short));
-  short *const BX = calloc(1, sizeof(short));
-  short *const CX = calloc(1, sizeof(short));
-  short *const DX = calloc(1, sizeof(short));
+  short *const REGS = calloc(9, sizeof(short));
+  short *const AX = REGS + 0,
+        *const BX = REGS + 1,
+        *const CX = REGS + 2,
+        *const DX = REGS + 3,
+        *const SP = REGS + 4,
+        *const BP = REGS + 5,
+        *const IP = REGS + 6,
+        *const DI = REGS + 7,
+        *const SI = REGS + 8;
+  
   char  *const AH = ((char*) AX) + O32_IS_LITTLE;
   char  *const AL = ((char*) AX) + O32_IS_BIG;
   char  *const BH = ((char*) BX) + O32_IS_LITTLE;
